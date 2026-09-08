@@ -23,12 +23,12 @@ When assisting in this repository or modifying the host system, you **MUST** str
 
 This workspace contains two tiers of flake configurations:
 1. **`templates/flake.nix`**: The canonical, portable, generic template used for unboxing and bootstrapping *any* new Mac (uses placeholder `system.primaryUser = "nix_test"` and generic `MacBook-Pro`).
-2. **`~/.config/nix-darwin/flake.nix`**: The active system configuration on *this* specific Mac (uses `system.primaryUser = "ryan.bartusek"` and hostname `Ryans-MacBook-Pro`).
+2. **`~/.config/nix-darwin/flake.nix`**: The active system configuration on the target Mac (uses local `system.primaryUser = "<primaryUser>"` and target hostname `<hostname>`).
 
 **Whenever modifying configuration:**
 * Update `templates/flake.nix` first.
-* Synchronize the changes to `~/.config/nix-darwin/flake.nix` (preserving the local username and hostname).
-* Test the derivation evaluation (`nix eval ~/.config/nix-darwin#darwinConfigurations.Ryans-MacBook-Pro.system`).
+* Synchronize the changes to `~/.config/nix-darwin/flake.nix` (preserving your local username and hostname).
+* Test the derivation evaluation (`nix eval ~/.config/nix-darwin#darwinConfigurations.<hostname>.system`).
 * Prompt or instruct the user to run `just switch`.
 
 ---
