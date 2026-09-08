@@ -68,3 +68,11 @@ This workspace contains two tiers of flake configurations:
 * **Assist with Commit Messages**: When work is completed, suggest clear, well-structured conventional commit messages matching repository conventions.
 * **DO NOT Commit or Push**: Under NO circumstances should the agent execute `git commit` or `git push`. Only the USER is authorized to commit and push changes to version control.
 
+---
+
+## 7. 📝 Documentation & Linking Rules (Obsidian & GitHub Scope)
+
+* **Strict Repository Self-Containment**: All links within this repository MUST resolve exclusively to notes and files inside `nix-mac`. Never generate relative links that traverse out to sibling directories or other repositories (e.g., do NOT write `[[../3d-printing/...]]` or `[...](../talos-aws-homelab/...)`).
+* **Obsidian Wikilinks Standard**: Use standard Obsidian Wikilinks `[[Note Name]]` (or `[[Folder/Note Name|Display Text]]`) for all internal note cross-references, setup checklists, and guides.
+* **External Cross-References**: If you need to reference an external project, tool, or sibling repository, mention it in plain text or provide the full canonical GitHub URL—never a relative local file path.
+
