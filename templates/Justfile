@@ -104,3 +104,28 @@ debloat:
     @sudo rm -rf /Applications/GarageBand.app /Applications/iMovie.app 2>/dev/null || true
     @sudo rm -rf "/Library/Application Support/GarageBand" "/Library/Application Support/Logic" "/Library/Audio/Apple Loops" 2>/dev/null || true
     @echo "Done! Disk space reclaimed."
+
+# ------------------------------------------------------------------------------
+# Homelab & Kubernetes Cluster Shortcuts (Talos + UniFi + AWS)
+# ------------------------------------------------------------------------------
+
+# Launch k9s Kubernetes TUI dashboard
+k9s:
+    k9s
+
+# Check Talos Linux HA control plane health (sm-node-01, 02, 03)
+talos-health:
+    talosctl --nodes 10.10.20.10,10.10.20.11,10.10.20.12 health
+
+# List Kubernetes nodes across the homelab cluster
+k8s-nodes:
+    kubectl get nodes -o wide
+
+# Check all running pods across all namespaces
+k8s-pods:
+    kubectl get pods -A -o wide
+
+# Connect to the remote Antigravity Dev Workspace on sm-node-03
+ssh-dev:
+    ssh antigravity-dev
+
