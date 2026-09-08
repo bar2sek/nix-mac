@@ -29,10 +29,30 @@
         pkgs.zsh-powerlevel10k
         pkgs.zsh-autosuggestions
         pkgs.zsh-syntax-highlighting
+
+        # Cloud & Kubernetes Homelab Tooling
+        pkgs.kubectl
+        pkgs.talosctl
+        pkgs.kubernetes-helm
+        pkgs.k9s
+        pkgs.ansible
+        pkgs.sops
+        pkgs.age
+        pkgs.cilium-cli
+        pkgs.stern
+        pkgs.yamllint
+        pkgs.tflint
       ];
 
       # Shell Aliases (Modern, Colorized with Nerd Font Icons)
       environment.shellAliases = {
+        # Kubernetes & Homelab Shortcuts
+        k = "kubectl";
+        kc = "kubectl";
+        k9 = "k9s";
+        talos = "talosctl";
+        tf = "terraform";
+
         # Modern Eza Listing (Colors + File Icons + Git status)
         ls = "eza --icons --group-directories-first";
         ll = "eza -lah --icons --group-directories-first --git";
