@@ -60,3 +60,11 @@ This workspace contains two tiers of flake configurations:
 * **Never Commit Installers or DMGs**: All `*.dmg`, `*.pkg`, and `*.iso` binaries are strictly ignored via `.gitignore` to prevent repository bloat and GitHub upload failures.
 * **No Leaked PII or Credentials**: Do not hardcode personal email addresses, private file paths, API tokens, or SSH keys in repository templates or documentation.
 * **Keep macOS Metadata Out**: Keep `.DS_Store` and AppleDouble files ignored and untracked.
+
+---
+
+## 6. 🚫 Git Commit & Push Policy (Absolute Rule)
+
+* **Assist with Commit Messages**: When work is completed, suggest clear, well-structured conventional commit messages matching repository conventions.
+* **DO NOT Commit or Push**: Under NO circumstances should the agent execute `git commit` or `git push`. Only the USER is authorized to commit and push changes to version control.
+
