@@ -68,7 +68,7 @@ just serve-omlx-32b
 
 ## 🛠️ Everyday Workflows (`just`)
 
-This repository includes a [`Justfile`](file:///Users/ryan.bartusek/Library/CloudStorage/GoogleDrive-bar2sek@outlook.com/My%20Drive/Mac_Setup/templates/Justfile) with handy shortcuts:
+This repository includes a [`Justfile`](templates/Justfile) with handy shortcuts:
 
 | Command | Purpose |
 | :--- | :--- |
