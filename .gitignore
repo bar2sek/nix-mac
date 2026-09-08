@@ -1,0 +1,14 @@
+# Binaries & disk images
+*.dmg
+*.iso
+*.pkg
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Local runtime & build artifacts
+result
+result-*
