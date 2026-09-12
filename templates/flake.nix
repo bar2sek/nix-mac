@@ -142,6 +142,7 @@
           "google-drive"
           "microsoft-onenote"
           "keymapp"
+          "navigator"
           "obsidian"
           "appcleaner"
 
