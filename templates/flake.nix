@@ -319,8 +319,8 @@
       # ----------------------------------------------------------------------
       # 5. Keyboard Remapping
       # ----------------------------------------------------------------------
-      system.keyboard.enableKeyMapping = true;
-      system.keyboard.remapCapsLockToEscape = true;
+      system.keyboard.enableKeyMapping = false;
+      system.keyboard.remapCapsLockToEscape = false;
 
       # ----------------------------------------------------------------------
       # 6. Declarative Fonts (Nerd Fonts for VS Code & Ghostty)
@@ -358,6 +358,9 @@
         # Ensure Screenshots folder exists
         mkdir -p "$USER_HOME/Pictures/Screenshots"
         chown -R "$PRIMARY_USER" "$USER_HOME/Pictures/Screenshots" 2>/dev/null || true
+
+        # Reset any hardware modifier key remappings (ensures Caps Lock behaves normally)
+        hidutil property --set '{"UserKeyMapping":[]}' > /dev/null 2>&1 || true
 
         echo "--> Deploying declarative Continue.dev & VS Code configuration..."
         mkdir -p "$USER_HOME/.continue"
