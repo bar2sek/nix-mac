@@ -363,6 +363,15 @@
         # Reset any hardware modifier key remappings (ensures Caps Lock behaves normally)
         hidutil property --set '{"UserKeyMapping":[]}' > /dev/null 2>&1 || true
 
+        # Declarative per-device modifier swap for ZSA Voyager (VendorID 12951, ProductID 6519)
+        # Swaps Control and Command ONLY for the Voyager; built-in MacBook keyboard remains untouched.
+        echo "--> Applying ZSA Voyager modifier key mapping (Ctrl <-> Cmd)..."
+        sudo -u "$PRIMARY_USER" defaults -currentHost write -g "com.apple.keyboard.modifiermapping.12951-6519-0" -array \
+          '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771299</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771296</integer></dict>' \
+          '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771296</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771299</integer></dict>' \
+          '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771303</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771300</integer></dict>' \
+          '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771300</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771303</integer></dict>'
+
         echo "--> Deploying declarative Continue.dev & VS Code configuration..."
         mkdir -p "$USER_HOME/.continue"
         cat << 'EOF' > "$USER_HOME/.continue/config.json"
