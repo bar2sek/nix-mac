@@ -91,6 +91,7 @@
         flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
         myip = "curl -s https://ipinfo.io/ip";
         localip = "ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1";
+        agy-awake = "caffeinate -s";
       };
 
       # Zsh Shell with Powerlevel10k, Auto-suggestions, Zoxide & FZF
