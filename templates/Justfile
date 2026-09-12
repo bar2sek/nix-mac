@@ -83,6 +83,10 @@ agy-app:
 agy:
     agy
 
+# Prevent Mac from sleeping during long-running tasks
+agy-awake:
+    caffeinate -s
+
 # Launch Visual Studio Code on the current directory
 code:
     open -a "Visual Studio Code" .
