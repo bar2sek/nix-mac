@@ -52,6 +52,7 @@
         k9 = "k9s";
         talos = "talosctl";
         tf = "terraform";
+        ts = "tailscale";
 
         # Modern Eza Listing (Colors + File Icons + Git status)
         ls = "eza --icons --group-directories-first";
@@ -147,11 +148,12 @@
           "obsidian"
           "appcleaner"
 
-          # Developer & AI
+          # Developer, AI & Remote Access
           "visual-studio-code"
           "ghostty"
           "orbstack"
           "google-gemini"
+          "tailscale-app"
         ];
 
         # Mac App Store Applications (Optional, requires numeric App ID)
@@ -372,6 +374,13 @@
           '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771296</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771299</integer></dict>' \
           '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771303</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771300</integer></dict>' \
           '<dict><key>HIDKeyboardModifierMappingDst</key><integer>30064771300</integer><key>HIDKeyboardModifierMappingSrc</key><integer>30064771303</integer></dict>'
+
+        # Ensure ~/.local/bin exists and symlink Tailscale CLI from Tailscale.app
+        mkdir -p "$USER_HOME/.local/bin"
+        if [ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
+          ln -sf "/Applications/Tailscale.app/Contents/MacOS/Tailscale" "$USER_HOME/.local/bin/tailscale"
+          chown -h "$PRIMARY_USER" "$USER_HOME/.local/bin/tailscale" 2>/dev/null || true
+        fi
 
         echo "--> Deploying declarative Continue.dev & VS Code configuration..."
         mkdir -p "$USER_HOME/.continue"
