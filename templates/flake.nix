@@ -420,10 +420,22 @@ EOF
   "editor.minimap.enabled": true,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Dark+",
   "workbench.iconTheme": "material-icon-theme",
   "telemetry.telemetryLevel": "off",
-  "update.mode": "default"
+  "update.mode": "default",
+  "git.enableSmartCommit": false,
+  "git.confirmSync": false,
+  "git.autorefresh": true,
+  "git.repositoryScanMaxDepth": 2,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.direnv/**": true,
+    "**/.trash/**": true,
+    "**/.obsidian/cache/**": true
+  }
 }
 EOF
         chown -R "$PRIMARY_USER" "$USER_HOME/Library/Application Support/Code"
