@@ -225,7 +225,9 @@
 
         # Trackpad settings
         trackpad = {
-          Clicking = false; # Disable tap to click (firm physical press required)
+          Clicking = false;         # Disable tap to click (requires deliberate press)
+          FirstClickThreshold = 2;  # Firm click pressure (0 = Light, 1 = Medium, 2 = Firm)
+          SecondClickThreshold = 2; # Firm Force Click threshold
         };
 
         # Screenshot settings (Clean Documentation)
