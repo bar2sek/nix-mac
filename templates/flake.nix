@@ -225,7 +225,7 @@
 
         # Trackpad settings
         trackpad = {
-          Clicking = true; # Tap to click
+          Clicking = false; # Disable tap to click (firm physical press required)
         };
 
         # Screenshot settings (Clean Documentation)
