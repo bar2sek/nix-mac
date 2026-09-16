@@ -278,7 +278,7 @@
           };
           # Desktop & Stage Manager (from screenshot)
           "com.apple.WindowManager" = {
-            EnableStandardClickToShowDesktop = true; # Click wallpaper to show desktop: Always
+            EnableStandardClickToShowDesktop = false; # Click wallpaper to reveal desktop: Only in Stage Manager (disables clearing windows)
             HideDesktop = true;                      # Show items on Desktop: OFF
             StageManagerHideWidgets = true;          # Show items in Stage Manager: OFF
             GloballyEnabled = false;                 # Stage Manager: OFF
