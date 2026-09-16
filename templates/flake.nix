@@ -238,6 +238,7 @@
           location = "~/Pictures/Screenshots";
           type = "png";
           disable-shadow = true; # No massive drop shadows around window screenshots
+          show-thumbnail = true; # Show floating preview thumbnail in bottom-right corner
         };
 
         # Control Center & Menu Bar
