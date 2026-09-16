@@ -42,6 +42,9 @@
         pkgs.stern
         pkgs.yamllint
         pkgs.tflint
+
+        # Cloud Storage & Sync Tooling
+        pkgs.rclone
       ];
 
       # Shell Aliases (Modern, Colorized with Nerd Font Icons)
