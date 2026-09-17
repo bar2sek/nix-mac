@@ -160,6 +160,7 @@
           "orbstack"
           "google-gemini"
           "tailscale-app"
+          "moonlight"
         ];
 
         # Mac App Store Applications (Optional, requires numeric App ID)
@@ -345,7 +346,7 @@
       # ----------------------------------------------------------------------
       # 7. Core Nix & User Settings
       # ----------------------------------------------------------------------
-      system.primaryUser = "nix_test";
+      system.primaryUser = "ryan.bartusek";
       nix.enable = false; # Disable nix-darwin management of Nix to allow Determinate Nix daemon
       system.stateVersion = 5;
       nixpkgs.hostPlatform = "aarch64-darwin";
