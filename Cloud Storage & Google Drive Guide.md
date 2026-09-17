@@ -62,7 +62,7 @@ homebrew.casks = [
   "google-drive"
   "obsidian"
   "orbstack"
-  "zed"
+  "visual-studio-code"
   "ghostty"
   "appcleaner"
 ];

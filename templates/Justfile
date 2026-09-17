@@ -24,20 +24,24 @@ gc:
     nix-collect-garbage -d
 
 # ------------------------------------------------------------------------------
-# Local LLM Serving (Apple MLX via uv)
+# Local LLM Serving (oMLX with Paged SSD KV Caching)
 # ------------------------------------------------------------------------------
 
-# Launch Qwen 2.5 Coder 32B via oMLX (with Paged SSD KV Caching for fast agent turns)
-serve-omlx-32b:
-    omlx serve --model mlx-community/Qwen2.5-Coder-32B-Instruct-4bit --port 8080
+# Launch oMLX multi-model server on port 8080 (Paged SSD cache + continuous batching)
+serve-omlx:
+    omlx serve --port 8080
 
-# Start oMLX as a background macOS service
+# Start oMLX as a managed background server
 omlx-start:
-    brew services start omlx
+    omlx start
 
-# Stop oMLX background service
+# Stop oMLX background server
 omlx-stop:
-    brew services stop omlx
+    omlx stop
+
+# Check oMLX diagnostics and menu bar status
+omlx-status:
+    omlx diagnose menubar
 
 # Launch Qwen 2.5 Coder 32B (4-bit) MLX Server for Deep Chat/Refactor (port 8080)
 serve-qwen-32b:

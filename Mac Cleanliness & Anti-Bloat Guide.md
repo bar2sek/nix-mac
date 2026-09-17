@@ -116,7 +116,7 @@ When you unbox a new Mac, Apple pre-installs two categories of software:
 * **What they are:** Mail, Stocks, News, Chess, Podcasts, Photos, Safari, Maps (located in `/System/Applications/`).
 * **The Reality:** macOS protects these on a cryptographically signed, read-only system volume (Signed System Volume). Deleting them is not allowed by Apple without breaking system integrity/updates.
 * **The Clean Nix-Darwin Solution:**
-  1. **Dock Decluttering:** Our `flake.nix` declares `system.defaults.dock.persistent-apps`, which **removes every Apple app icon from your Dock**, pinning only your coding tools (Ghostty, Zed, Obsidian, OrbStack, Antigravity).
+  1. **Dock Decluttering:** Our `flake.nix` declares `system.defaults.dock.persistent-apps`, which **removes every Apple app icon from your Dock**, pinning only your coding tools (Ghostty, Visual Studio Code, Obsidian, OrbStack, Antigravity).
   2. **Zero Background Overhead:** These system apps consume 0% CPU and 0MB RAM as long as you do not open them.
 
 ---

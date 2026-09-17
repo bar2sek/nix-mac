@@ -23,7 +23,7 @@ Combining **local M5 Pro hardware** with **agentic orchestration platforms** yie
 │ • Keystroke Tab Autocomplete │ • Multi-file Architecture    │
 │ • Fill-In-The-Middle (FIM)   │ • Agentic Refactoring        │
 │ • Local Qwen 2.5 Coder (MLX) │ • Automated Terminal & Tests │
-│ • Editor: VS Code / Zed      │ • Planning & Subagent Swarms │
+│ • Editor: VS Code (Continue) │ • Planning & Subagent Swarms │
 │ • 0ms Cloud Latency / $0 Cost│ • Deep Reasoning & Research  │
 └──────────────────────────────┴──────────────────────────────┘
 ```
@@ -33,7 +33,7 @@ Combining **local M5 Pro hardware** with **agentic orchestration platforms** yie
 ## Tier 1: Micro-Level (Local Qwen on Apple Silicon)
 * **Goal:** Zero-latency code writing as your fingers hit the keys.
 * **Model:** `Qwen 2.5 Coder 1.5B / 7B (Base/FIM)` or `14B` running via MLX.
-* **Environment:** VS Code with [Continue.dev](https://continue.dev) or [Zed](https://zed.dev) editor.
+* **Environment:** VS Code with [Continue.dev](https://continue.dev).
 * **Why Local:** Autocomplete happens dozens of times a minute; running locally on your 48GB M5 Pro guarantees near-zero latency, total privacy, and no network dependencies.
 
 ---

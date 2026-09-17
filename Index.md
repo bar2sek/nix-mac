@@ -28,7 +28,7 @@ Welcome to the **Mac AI Workstation** notes vault. This workspace documents the 
 
 ### 2. LLM Serving & MLX
 * [[Local LLMs with MLX]] — Running Qwen 2.5 Coder (14B/32B) via Apple's MLX and `uv` with zero global system bloat.
-* [[IDE Configuration Guide]] — Step-by-step config for VS Code + Continue.dev and Zed editor.
+* [[IDE Configuration Guide]] — Step-by-step config for VS Code + Continue.dev and Antigravity.
 
 ### 3. Containerization & Isolation
 * [[Container Strategy]] — Apple Container (`apple/container`) vs. OrbStack vs. Docker Desktop.

@@ -50,29 +50,44 @@ uvx --from mlx-lm mlx_lm.server \
 
 ---
 
-## 🚀 oMLX: The Ultimate Inference Server for AI Coding Agents
+## 🚀 Primary Inference Engine: oMLX
 
-[oMLX](https://github.com/jundot/omlx) is an advanced MLX-based inference server specifically engineered for **local coding agents** (Claude Code, Cursor, Zed, Aider, OpenHands) on Apple Silicon Macs.
+[oMLX](https://github.com/jundot/omlx) is your **primary, dedicated inference engine** for local coding models on Apple Silicon. Installed declaratively via `nix-mac` as `/Applications/oMLX.app`, it provides high-throughput token generation paired with **Paged SSD KV Caching**.
 
-### The Problem with Standard Local Servers in Agentic Workflows
-In multi-turn coding sessions, agents repeatedly send large prompt prefixes (system instructions + codebase summaries + conversation history). 
+### Why oMLX is the Standard for Agentic & Multi-Turn Coding
+In multi-turn coding sessions (chat, follow-ups, or agent loops), assistants repeatedly re-send large prompt prefixes (system instructions + codebase files + chat history).
 * With vanilla `mlx-lm` or `llama.cpp`, the server recomputes the entire context from scratch on every turn, causing **5–15 second latency delays (Time-to-First-Token)**.
-
-### How oMLX Fixes It (Paged SSD KV Caching)
-* **Tier 1 (RAM):** Active KV cache blocks remain in unified memory.
-* **Tier 2 (NVMe SSD):** Historical and branched KV cache blocks are saved to your Mac's ultra-fast internal SSD in `safetensors` format.
-* **Instant Prefix Restoration:** When an agent sends a new turn with a known prefix, oMLX loads the cached state from SSD in milliseconds.
-* **Result:** Time-to-First-Token (TTFT) drops from **10+ seconds to $< 0.5$ seconds**!
+* **Paged SSD KV Caching:** oMLX persists historical and branched KV cache blocks to your Mac's internal NVMe SSD in `safetensors` format (`~/.omlx/cache`). When VS Code sends a new turn with a known prefix, oMLX restores the cached state in milliseconds, dropping TTFT to **$< 0.5$ seconds**.
 
 ### Key Features of oMLX
-1. **Dual API Compatibility:** Exposes both **OpenAI** (`/v1/chat/completions`) and **Anthropic** (`/v1/messages`) endpoints.
-2. **Native macOS Menu Bar App:** Written in PyObjC (zero Electron bloat) for monitoring token speeds and memory usage.
-3. **Continuous Batching:** Processes concurrent requests without blocking.
+1. **Multi-Model Continuous Batching:** Simultaneously handles concurrent requests (e.g. Chat and Tab Autocomplete) without blocking.
+2. **Auto Model Discovery:** Automatically discovers models cached in `~/.cache/huggingface/hub/` without manual copying.
+3. **Dual API Compatibility:** Exposes standard **OpenAI** (`/v1/chat/completions`) and **Anthropic** (`/v1/messages`) endpoints on `localhost:8080`.
+4. **Native macOS Menu Bar App:** Monitor token speeds, VRAM, and active requests with zero Electron bloat.
 
-### Running oMLX
+### Launching oMLX
 ```bash
-# Launch via oMLX.app GUI menu bar app, or via CLI:
-omlx serve --model mlx-community/Qwen2.5-Coder-32B-Instruct-4bit --port 8080
+# Start multi-model server on port 8080 (via Justfile):
+just serve-omlx
+
+# Or start as a managed background daemon:
+just omlx-start
+
+# Check health and menu bar status:
+just omlx-status
+```
+
+---
+
+## 🛠️ Secondary Fallback: `mlx-lm` via `uv`
+
+For quick CLI tests and one-off benchmarks (without launching the full server), use `uvx` for ephemeral execution:
+
+```bash
+# 5-second CLI generation benchmark
+uvx --from mlx-lm mlx_lm.generate \
+  --model mlx-community/Qwen2.5-Coder-14B-Instruct-4bit \
+  --prompt "Write a Python script that benchmarks GPU memory bandwidth on Apple Silicon."
 ```
 
 ---
@@ -85,14 +100,13 @@ Tab autocomplete has fundamentally different latency and architectural requireme
 
 | Modality | Target Latency | Best Local Model Size | Recommended Tooling |
 | :--- | :--- | :--- | :--- |
-| **Tab Autocomplete (FIM)** | `< 50ms` per keystroke | **Qwen 2.5 Coder 1.5B / 7B (Base)** | **VS Code + Continue.dev** or **Zed** |
+| **Tab Autocomplete (FIM)** | `< 50ms` per keystroke | **Qwen 2.5 Coder 1.5B / 7B (Base)** | **VS Code + Continue.dev** |
 | **Chat, Refactoring & Agents** | `200ms – 1s` | **Qwen 2.5 Coder 32B (Instruct)** | **Antigravity**, **Cursor**, **Aider** |
 
 ### How IDEs Handle Local Tab Completion:
-1. **Antigravity IDE**: Uses **Antigravity Tab** (Google DeepMind's proprietary next-intent speculative decoding engine). It is optimized for cloud sub-50ms latency and does not natively support rerouting autocomplete to a custom local endpoint.
-2. **VS Code + [Continue.dev](https://continue.dev)**: The industry standard for local tab-completion. Allows you to set `tabAutocompleteModel` to your local MLX/Ollama endpoint using a lightweight model (`qwen2.5-coder:1.5b-base`).
-3. **Zed Editor**: Native macOS Rust editor with built-in native support for local Ollama/MLX autocompletion.
-4. **Cursor**: Features built-in custom OpenAI API support for chat, while its proprietary "Cursor Tab" routes through Cursor's multi-token prediction engine.
+1. **VS Code + [Continue.dev](https://continue.dev)**: The industry standard for local tab-completion and inline code generation. Allows you to set `tabAutocompleteModel` to your local MLX/Ollama endpoint using a lightweight model (`qwen2.5-coder:1.5b-base`).
+2. **Antigravity IDE**: Uses **Antigravity Tab** (Google DeepMind's proprietary next-intent speculative decoding engine). It is optimized for cloud sub-50ms latency and does not natively support rerouting autocomplete to a custom local endpoint.
+3. **Cursor**: Features built-in custom OpenAI API support for chat, while its proprietary "Cursor Tab" routes through Cursor's multi-token prediction engine.
 
 ---
 

@@ -391,30 +391,37 @@
           chown -h "$PRIMARY_USER" "$USER_HOME/.local/bin/tailscale" 2>/dev/null || true
         fi
 
+        # Symlink oMLX CLI from oMLX.app
+        if [ -f "/Applications/oMLX.app/Contents/MacOS/omlx-cli" ]; then
+          ln -sf "/Applications/oMLX.app/Contents/MacOS/omlx-cli" "$USER_HOME/.local/bin/omlx"
+          chown -h "$PRIMARY_USER" "$USER_HOME/.local/bin/omlx" 2>/dev/null || true
+        fi
+
         echo "--> Deploying declarative Continue.dev & VS Code configuration..."
         mkdir -p "$USER_HOME/.continue"
         cat << 'EOF' > "$USER_HOME/.continue/config.json"
 {
   "tabAutocompleteModel": {
-    "title": "Local Qwen 14B Autocomplete (MLX)",
+    "title": "Local Qwen 1.5B Tab Autocomplete (oMLX)",
     "provider": "openai",
-    "model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
-    "apiBase": "http://localhost:8081/v1"
+    "model": "mlx-community--Qwen2.5-Coder-1.5B-Instruct-4bit",
+    "apiBase": "http://localhost:8080/v1"
   },
   "models": [
     {
-      "title": "Local Qwen 32B Chat (oMLX)",
+      "title": "Local Qwen 32B Deep Chat (oMLX)",
       "provider": "openai",
-      "model": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
+      "model": "mlx-community--Qwen2.5-Coder-32B-Instruct-4bit",
       "apiBase": "http://localhost:8080/v1"
     },
     {
-      "title": "Local Qwen 14B Chat (MLX)",
+      "title": "Local Qwen 14B Fast Chat (oMLX)",
       "provider": "openai",
-      "model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+      "model": "mlx-community--Qwen2.5-Coder-14B-Instruct-4bit",
       "apiBase": "http://localhost:8080/v1"
     }
-  ]
+  ],
+  "allowAnonymousTelemetry": false
 }
 EOF
         chown -R "$PRIMARY_USER" "$USER_HOME/.continue"

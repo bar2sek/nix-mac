@@ -69,14 +69,13 @@ Located in `templates/bootstrap.sh`, this script executes the entire workstation
 2. **Homebrew:** Installs Homebrew and sets up shell paths.
 3. **Determinate Nix:** Installs the modern, reliable Nix package manager daemon.
 4. **Nix-Darwin System Build:**
-   * Installs **Brave Browser, Microsoft Edge, Google Drive, Microsoft OneNote, Keymapp, Obsidian, AppCleaner, Zed, Ghostty, OrbStack, and oMLX**.
+   * Installs **Brave Browser, Microsoft Edge, Google Drive, Microsoft OneNote, Keymapp, Obsidian, AppCleaner, Visual Studio Code, Ghostty, OrbStack, and oMLX**.
    * Installs **JetBrainsMono Nerd Font** system-wide.
-   * **Auto-writes `~/.config/zed/settings.json`** with VS Code layout, Material Icons, and local Qwen MLX endpoints.
    * **Auto-writes `~/.config/ghostty/config`** with matching fonts, ligatures, and Tokyo Night theme.
    * **Organizes the Dock in your custom 3-section order**:
      * 🌐 **Left (Browsers):** Safari $\rightarrow$ Microsoft Edge $\rightarrow$ Brave Browser
      * 💬 **Middle (Apple Core & OneNote):** Messages $\rightarrow$ Mail $\rightarrow$ Maps $\rightarrow$ Photos $\rightarrow$ FaceTime $\rightarrow$ Calendar $\rightarrow$ Contacts $\rightarrow$ Reminders $\rightarrow$ Notes $\rightarrow$ Microsoft OneNote
-     * 💻 **Right (Developer & AI):** Gemini $\rightarrow$ Antigravity $\rightarrow$ Ghostty $\rightarrow$ Zed $\rightarrow$ Obsidian $\rightarrow$ OrbStack
+     * 💻 **Right (Developer & AI):** Gemini $\rightarrow$ Antigravity $\rightarrow$ Ghostty $\rightarrow$ Visual Studio Code $\rightarrow$ Obsidian $\rightarrow$ OrbStack
    * Enforces local file saving defaults (disables iCloud file routing).
    * Automatically purges GarageBand, iMovie, and sound libraries to reclaim **~5–8 GB**.
 
@@ -103,7 +102,7 @@ just serve-omlx-32b
 ## 🎯 5. Post-Setup Verification (Day 1)
 
 After running the bootstrap script:
-- [ ] Open **Zed** $\rightarrow$ Verify VS Code keybindings (`Cmd + P`), Material Icon Theme, and Assistant panel (`Cmd + Shift + E`).
+- [ ] Open **Visual Studio Code** $\rightarrow$ Verify Continue.dev extension, theme, and keybindings.
 - [ ] Open **Ghostty** $\rightarrow$ Verify crisp JetBrains Mono Nerd Font typography.
 - [ ] Open **OrbStack** $\rightarrow$ Test container engine with `docker run --rm hello-world`.
 - [ ] Open **Google Drive** $\rightarrow$ Set Obsidian Vault folder to **"Available offline"**.

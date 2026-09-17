@@ -30,7 +30,7 @@ Running local AI workflows alongside isolated development environments on Apple 
 │   │  Isolated Application & Dev Container Layer          │  │
 │   │  • Apple Container (`apple/container`) or OrbStack   │  │
 │   │  • DevContainers, Databases, Node/Rust Toolchains    │  │
-│   │  • IDEs (Cursor / VS Code / Zed) connect to port 8080│  │
+│   │  • IDEs (VS Code / Antigravity) connect to port 8080 │  │
 │   └──────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 ```

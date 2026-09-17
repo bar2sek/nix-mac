@@ -76,16 +76,16 @@ Follow this step-by-step checklist when unboxing your new MacBook Pro to ensure 
 ---
 
 ## Phase 4: IDE & Agent Integration
-- [ ] Verify **Zed** is installed (automatically installed via `nix-darwin` flake):
+- [ ] Verify **Visual Studio Code** is installed (automatically installed via `nix-darwin` flake):
   ```bash
-  which zed
+  which code
   ```
-- [ ] Configure `~/.config/zed/settings.json` with local MLX endpoint (see [[IDE Configuration Guide]]).
+- [ ] Install and configure **Continue.dev** extension with local MLX endpoint (see [[IDE Configuration Guide]]).
 - [ ] Verify **Antigravity CLI (`agy`)** and Desktop app are installed (automated via `bootstrap.sh`):
   ```bash
   agy --version
   ```
-- [ ] Test local inline code generation inside Zed (`Ctrl + Enter`).
+- [ ] Test local inline code generation inside VS Code (`Cmd + I`).
 - [ ] Test agentic workflow inside Antigravity on your workspace (`agy` or `Antigravity.app`).
 
 ---
