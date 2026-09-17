@@ -391,10 +391,11 @@
           chown -h "$PRIMARY_USER" "$USER_HOME/.local/bin/tailscale" 2>/dev/null || true
         fi
 
-        # Symlink oMLX CLI from oMLX.app
+        # Symlink oMLX CLI from oMLX.app and register login item
         if [ -f "/Applications/oMLX.app/Contents/MacOS/omlx-cli" ]; then
           ln -sf "/Applications/oMLX.app/Contents/MacOS/omlx-cli" "$USER_HOME/.local/bin/omlx"
           chown -h "$PRIMARY_USER" "$USER_HOME/.local/bin/omlx" 2>/dev/null || true
+          sudo -u "$PRIMARY_USER" osascript -e 'tell application "System Events" to if not (exists login item "oMLX") then make login item at end with properties {path:"/Applications/oMLX.app", hidden:true, name:"oMLX"}' 2>/dev/null || true
         fi
 
         echo "--> Deploying declarative Continue.dev & VS Code configuration..."
