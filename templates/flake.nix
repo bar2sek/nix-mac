@@ -500,6 +500,16 @@ EOF
         # Ensure ~/.p10k.zsh is owned by the user
         [ ! -f "$USER_HOME/.p10k.zsh" ] || chown "$PRIMARY_USER" "$USER_HOME/.p10k.zsh"
 
+        # Declarative Network Printer: Brother DCP-7065DN via Homelab CUPS Bridge
+        echo "--> Configuring declarative network printer (Brother DCP-7065DN)..."
+        lpadmin -p "Brother_DCP_7065DN" \
+          -D "Brother DCP-7065DN" \
+          -L "Homelab Rack" \
+          -E \
+          -v "ipp://printing.bar2sek.com:631/printers/Brother_DCP-7065DN" \
+          -m everywhere 2>/dev/null || true
+        lpoptions -d "Brother_DCP_7065DN" 2>/dev/null || true
+
         # Refresh macOS Dock and live Dark Mode appearance immediately
         sudo -u "$PRIMARY_USER" osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true' 2>/dev/null || true
         killall Dock 2>/dev/null || true
