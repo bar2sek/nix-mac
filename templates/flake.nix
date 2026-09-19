@@ -155,7 +155,8 @@
           "appcleaner"
 
           # Developer, AI & Remote Access
-          "visual-studio-code"
+          "antigravity-ide"
+          "antigravity"
           "ghostty"
           "orbstack"
           "google-gemini"
@@ -211,8 +212,8 @@
             # 3. Developer & AI Workstation Tools (Farthest Right)
             "/Applications/Gemini.app"
             "/Applications/Antigravity.app"
+            "/Applications/Antigravity IDE.app"
             "/Applications/Ghostty.app"
-            "/Applications/Visual Studio Code.app"
             "/Applications/Obsidian.app"
             "/Applications/OrbStack.app"
           ];
@@ -399,27 +400,15 @@
           sudo -u "$PRIMARY_USER" osascript -e 'tell application "System Events" to if not (exists login item "oMLX") then make login item at end with properties {path:"/Applications/oMLX.app", hidden:true, name:"oMLX"}' 2>/dev/null || true
         fi
 
-        echo "--> Deploying declarative Continue.dev & VS Code configuration..."
+        echo "--> Deploying declarative Antigravity IDE & Local AI configuration..."
         mkdir -p "$USER_HOME/.continue"
         cat << 'EOF' > "$USER_HOME/.continue/config.json"
 {
-  "tabAutocompleteModel": {
-    "title": "Local Qwen 1.5B Tab Autocomplete (oMLX)",
-    "provider": "openai",
-    "model": "mlx-community--Qwen2.5-Coder-1.5B-Instruct-4bit",
-    "apiBase": "http://localhost:8080/v1"
-  },
   "models": [
     {
-      "title": "Local Qwen 32B Deep Chat (oMLX)",
+      "title": "Local Qwen 32B (oMLX)",
       "provider": "openai",
-      "model": "mlx-community--Qwen2.5-Coder-32B-Instruct-4bit",
-      "apiBase": "http://localhost:8080/v1"
-    },
-    {
-      "title": "Local Qwen 14B Fast Chat (oMLX)",
-      "provider": "openai",
-      "model": "mlx-community--Qwen2.5-Coder-14B-Instruct-4bit",
+      "model": "mlx-community--Qwen2.5-Coder-32B-Instruct-8bit",
       "apiBase": "http://localhost:8080/v1"
     }
   ],
@@ -428,8 +417,12 @@
 EOF
         chown -R "$PRIMARY_USER" "$USER_HOME/.continue"
 
-        mkdir -p "$USER_HOME/Library/Application Support/Code/User"
-        cat << 'EOF' > "$USER_HOME/Library/Application Support/Code/User/settings.json"
+        # Apply settings to both Antigravity IDE and Code OSS
+        for settings_dir in \
+          "$USER_HOME/Library/Application Support/Antigravity/User" \
+          "$USER_HOME/Library/Application Support/Code/User"; do
+          mkdir -p "$settings_dir"
+          cat << 'EOF' > "$settings_dir/settings.json"
 {
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
@@ -437,8 +430,7 @@ EOF
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": true,
   "editor.formatOnSave": true,
-  "editor.inlineSuggest.enabled": true,
-  "workbench.colorTheme": "Dark+",
+  "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "material-icon-theme",
   "telemetry.telemetryLevel": "off",
   "update.mode": "default",
@@ -456,25 +448,28 @@ EOF
   }
 }
 EOF
-        chown -R "$PRIMARY_USER" "$USER_HOME/Library/Application Support/Code"
+          chown -R "$PRIMARY_USER" "$settings_dir"
+        done
 
-        echo "--> Installing declarative VS Code extensions..."
-        CODE_CLI="/opt/homebrew/bin/code"
-        [ -x "$CODE_CLI" ] || CODE_CLI="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
-        if [ -x "$CODE_CLI" ]; then
-          for ext in \
-            "Continue.continue" \
-            "ms-vscode-remote.remote-containers" \
-            "ms-azuretools.vscode-docker" \
-            "ms-vscode-remote.remote-ssh" \
-            "PKief.material-icon-theme" \
-            "jnoortheen.nix-ide" \
-            "hashicorp.terraform" \
-            "amazonwebservices.aws-toolkit-vscode" \
-            "ms-kubernetes-tools.vscode-kubernetes-tools"; do
-            sudo -H -u "$PRIMARY_USER" env HOME="$USER_HOME" "$CODE_CLI" --install-extension "$ext" --force 2>/dev/null || true
-          done
-        fi
+        echo "--> Installing declarative Antigravity IDE & editor extensions..."
+        for ide_bin in \
+          "/opt/homebrew/bin/antigravity-ide" \
+          "/opt/homebrew/bin/agy-ide" \
+          "/Applications/Antigravity IDE.app/Contents/Resources/app/bin/antigravity-ide" \
+          "/opt/homebrew/bin/code"; do
+          if [ -x "$ide_bin" ]; then
+            for ext in \
+              "RooVeterinaryInc.roo-cline" \
+              "enkia.tokyo-night" \
+              "PKief.material-icon-theme" \
+              "jnoortheen.nix-ide" \
+              "hashicorp.terraform" \
+              "ms-azuretools.vscode-docker" \
+              "ms-kubernetes-tools.vscode-kubernetes-tools"; do
+              sudo -H -u "$PRIMARY_USER" env HOME="$USER_HOME" "$ide_bin" --install-extension "$ext" --force 2>/dev/null || true
+            done
+          fi
+        done
 
         echo "--> Deploying declarative Ghostty configuration..."
         mkdir -p "$USER_HOME/.config/ghostty"

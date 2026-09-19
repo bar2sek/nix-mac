@@ -10,22 +10,23 @@ tags:
 created: 2026-08-24
 ---
 
-# ⚡ Visual Studio Code + Antigravity Setup
+# ⚡ Antigravity IDE + Multi-Model Setup
 
-**Visual Studio Code** is your primary editor canvas for coding on macOS, fully paired with **Continue.dev** for zero-latency local AI completions and **Antigravity** for macro-level agentic orchestration.
+**Antigravity IDE** is your primary development environment on macOS—combining the familiarity and extension ecosystem of Code OSS with Google's native agentic architecture and **Roo Code** as a multi-model backup switcher.
 
-* **Familiar & Robust:** Deep ecosystem of language servers, debuggers, and extensions.
-* **Local AI Integration via Continue.dev:** Connects directly to local OpenAI-compatible endpoints (`mlx-lm` / `oMLX` on Apple Silicon) for keystroke autocompletion (FIM) and inline refactoring.
-* **Dual-Tier Synergy:** Seamlessly coexists with Antigravity Desktop / CLI for multi-file autonomous planning and background tasks.
+* **Unified Agent Canvas:** Seamlessly integrates native Antigravity agent workflows (Gemini Flash/Pro) directly alongside the editor canvas, visual diffs, and terminal.
+* **Multi-Model Backup Switcher (Roo Code):** Provides an instant toggle between **Local Qwen 2.5 Coder 32B** (`http://localhost:8080/v1`) and **Claude 3.7 Sonnet** (Anthropic API) whenever AGY tokens are exhausted.
+* **Zero Bloat:** Replaces standalone VS Code entirely; tab-autocomplete background models are removed to free up 100% of local GPU memory.
 
 ---
 
-## 🛠️ Step 1: Install VS Code via `nix-darwin`
+## 🛠️ Step 1: Install Antigravity IDE via `nix-darwin`
 
-Visual Studio Code is declared directly in your `templates/flake.nix` under `homebrew.casks`:
+Antigravity IDE is declared directly in your `templates/flake.nix` under `homebrew.casks`:
 ```nix
 homebrew.casks = [
-  "visual-studio-code"
+  "antigravity-ide"
+  "antigravity"
   "obsidian"
   "orbstack"
   "appcleaner"
@@ -37,69 +38,47 @@ homebrew.casks = [
 
 ## ⚙️ Step 2: Essential Extensions
 
-Install the recommended extensions to match the workstation's typography, aesthetics, and local AI capabilities:
+Install the recommended extensions to match the workstation's typography, aesthetics, and autonomous backup capabilities:
 
 ```bash
-# Local AI Autocomplete & Chat
-code --install-extension Continue.continue
+# Autonomous Multi-Model Agent (Local MLX + Claude API Backup)
+agy-ide --install-extension RooVeterinaryInc.roo-cline
 
 # Aesthetics & Typography
-code --install-extension PKief.material-icon-theme
-code --install-extension enkia.tokyo-night
-code --install-extension zhuangtongfa.material-theme
+agy-ide --install-extension PKief.material-icon-theme
+agy-ide --install-extension enkia.tokyo-night
 
 # Language & Tooling Support
-code --install-extension bbenoist.Nix
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+agy-ide --install-extension bbenoist.Nix
+agy-ide --install-extension ms-azuretools.vscode-docker
+agy-ide --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+agy-ide --install-extension hashicorp.terraform
 ```
 
 ---
 
-## 🤖 Step 3: Local AI Configuration with Continue.dev
+## 🤖 Step 3: Configuring Roo Code as the Backup Switcher
 
-[Continue.dev](https://continue.dev) connects VS Code to your local Apple MLX models running on `localhost:8080` (chat & refactor) and `localhost:8081` (tab autocomplete).
+Inside Antigravity IDE, open the **Roo Code** sidebar panel and configure your two profiles:
 
-Edit or create **`~/.continue/config.json`**:
+### Profile 1: Local M5 Pro MLX ($0 / Unlimited)
+* **Provider:** `OpenAI Compatible`
+* **Base URL:** `http://localhost:8080/v1`
+* **Model ID:** `mlx-community/Qwen2.5-Coder-32B-Instruct-6bit` (or `8bit`)
+* **Use Case:** Free autonomous file edits, unit test generation, log diagnosis, and offline work.
 
-```json
-{
-  "models": [
-    {
-      "title": "Local Qwen 2.5 Coder 32B (MLX)",
-      "provider": "openai",
-      "model": "mlx-community/Qwen2.5-Coder-32B-Instruct-4bit",
-      "apiBase": "http://localhost:8080/v1"
-    },
-    {
-      "title": "Local Qwen 2.5 Coder 14B (MLX)",
-      "provider": "openai",
-      "model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
-      "apiBase": "http://localhost:8080/v1"
-    }
-  ],
-  "tabAutocompleteModel": {
-    "title": "Local Qwen 2.5 Coder 1.5B (Tab FIM)",
-    "provider": "openai",
-    "model": "mlx-community/Qwen2.5-Coder-1.5B-Instruct-4bit",
-    "apiBase": "http://localhost:8081/v1"
-  },
-  "customCommands": [
-    {
-      "name": "test",
-      "prompt": "{{{ input }}}\n\nWrite comprehensive unit tests for the selected code.",
-      "description": "Generate unit tests"
-    }
-  ],
-  "allowAnonymousTelemetry": false
-}
-```
+### Profile 2: Claude 3.7 Sonnet (Frontier Backup)
+* **Provider:** `Anthropic` (or `OpenRouter`)
+* **API Key:** Stored securely in your environment or password manager
+* **Model ID:** `claude-3-7-sonnet-20250219`
+* **Prompt Caching:** Enabled (slashes multi-turn API costs by ~90%)
+* **Use Case:** High-reasoning fallback when Antigravity rate limits are triggered.
 
 ---
 
 ## 🎨 Step 4: Ergonomic Editor Settings
 
-Configure your VS Code user settings (`~/Library/Application Support/Code/User/settings.json`) to align with Ghostty and your hardware preferences:
+Configure your user settings (`~/Library/Application Support/Antigravity/User/settings.json`) to align with Ghostty and your hardware preferences:
 
 ```json
 {
@@ -126,38 +105,23 @@ Configure your VS Code user settings (`~/Library/Application Support/Code/User/s
 
 ---
 
-## ⌨️ AI Keyboard Shortcuts Cheat Sheet
-
-| Action | Shortcut (macOS) | Description |
-| :--- | :--- | :--- |
-| **Accept Autocomplete** | `Tab` | Accept predicted inline code completion |
-| **Partial Accept** | `Cmd + Right` | Accept code suggestion word-by-word |
-| **Inline AI Edit** | `Cmd + I` | Highlight code and instruct local Qwen to edit |
-| **Open AI Chat Sidebar** | `Cmd + L` | Discuss selected code or ask architectural questions |
-| **Quick File Open** | `Cmd + P` | Fuzzy search and open files |
-| **Command Palette** | `Cmd + Shift + P` | Access VS Code commands |
-| **Toggle Terminal** | `Ctrl + ~` | Open/hide integrated terminal |
-
----
-
-## 🤝 The Dual-Tier Workflow in Practice
+## 🤝 The Unified Workflow in Practice
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    DAILY CODING ROUTINE                     │
 │                                                             │
-│ 1. Launch local MLX servers via terminal / Justfile:        │
-│    `just serve-all`                                         │
-│    • Port 8080: Qwen 2.5 Coder 32B (Chat / Edit)            │
-│    • Port 8081: Qwen 2.5 Coder 1.5B (Tab Autocomplete)      │
+│ 1. Launch local MLX server:                                 │
+│    `just serve-omlx` (Port 8080: Qwen 2.5 Coder 32B)        │
 │                                                             │
-│ 2. Code inside VS CODE                                      │
-│    • Real-time local tab completion via Continue.dev        │
-│    • Instant inline refactoring with `Cmd + I`              │
+│ 2. Primary Development in ANTIGRAVITY IDE:                  │
+│    • Use Native Antigravity Agent for high-level tasks      │
+│    • Autonomous builds, tests, and multi-repo planning      │
 │                                                             │
-│ 3. Complex Architecture / Multi-File Planning               │
-│    • Open ANTIGRAVITY on the same workspace folder          │
-│    • Run autonomous builds, tests, and subagent swarms      │
+│ 3. Token Quota Reached or Scoped Offline Work:              │
+│    • Click ROO CODE in the same Antigravity IDE sidebar     │
+│    • Toggle to Local Qwen 32B ($0) or Claude 3.7 Sonnet    │
+│    • Continue executing without interrupting context        │
 └─────────────────────────────────────────────────────────────┘
 ```
 

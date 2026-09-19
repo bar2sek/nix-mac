@@ -9,53 +9,65 @@ tags:
 created: 2026-08-24
 ---
 
-# ⚡ The Dual-Tier AI Developer Workflow
+# ⚡ The Unified Agentic Developer Workflow
 
-Combining **local M5 Pro hardware** with **agentic orchestration platforms** yields the optimal balance of speed, privacy, and deep reasoning:
+Combining **local M5 Pro hardware** with **frontier cloud models** inside a single unified canvas (**Antigravity IDE**) yields the optimal balance of speed, zero token exhaustion, and deep reasoning:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   DUAL-TIER AI ARCHITECTURE                 │
+│                 UNIFIED AGENTIC ARCHITECTURE                │
+├─────────────────────────────────────────────────────────────┤
+│               WORKSPACE CANVAS: ANTIGRAVITY IDE             │
 ├──────────────────────────────┬──────────────────────────────┤
-│  TIER 1: Local M5 Pro (MLX)  │   TIER 2: Antigravity (AGY)  │
-│  "The Micro-Level Typist"    │   "The Macro-Level Architect"│
+│ PRIMARY: Native AGY Agent    │ BACKUP: Roo Code Switcher    │
+│ "The Autonomous Architect"   │ "Local MLX & Frontier Cloud" │
 ├──────────────────────────────┼──────────────────────────────┤
-│ • Keystroke Tab Autocomplete │ • Multi-file Architecture    │
-│ • Fill-In-The-Middle (FIM)   │ • Agentic Refactoring        │
-│ • Local Qwen 2.5 Coder (MLX) │ • Automated Terminal & Tests │
-│ • Editor: VS Code (Continue) │ • Planning & Subagent Swarms │
-│ • 0ms Cloud Latency / $0 Cost│ • Deep Reasoning & Research  │
+│ • Gemini Flash / Pro (Cloud) │ • Local Qwen 32B (:8080 MLX) │
+│ • Multi-file Planning & Docs │ • Claude 3.7 Sonnet (API)    │
+│ • Subagent Orchestration     │ • $0 Scoped Edits & Scripts  │
+│ • Terminal Sandbox Tools     │ • Rate-Limit Relief Valve    │
+│ • Runs until Quota Pause     │ • 100% In-IDE Seamless Flow  │
 └──────────────────────────────┴──────────────────────────────┘
 ```
 
 ---
 
-## Tier 1: Micro-Level (Local Qwen on Apple Silicon)
-* **Goal:** Zero-latency code writing as your fingers hit the keys.
-* **Model:** `Qwen 2.5 Coder 1.5B / 7B (Base/FIM)` or `14B` running via MLX.
-* **Environment:** VS Code with [Continue.dev](https://continue.dev).
-* **Why Local:** Autocomplete happens dozens of times a minute; running locally on your 48GB M5 Pro guarantees near-zero latency, total privacy, and no network dependencies.
+## Tier 1: Primary Orchestrator (Native Antigravity Agent)
+* **Goal:** High-level planning, complex multi-repo orchestration, and autonomous execution.
+* **Platform:** Antigravity IDE native agent panel.
+* **Model:** Gemini 3.8 Flash (Medium) / Gemini Pro.
+* **Capabilities:**
+  1. Inspecting file structures, reading docs, and drafting implementation plans.
+  2. Executing terminal commands (`talosctl`, `kubectl`, `nix`).
+  3. Spawning subagents for concurrent tasks.
+  4. Visual diff overlays and inline diagnostic auto-fixes.
 
 ---
 
-## Tier 2: Macro-Level (Antigravity Agentic Platform)
-* **Goal:** High-level planning, autonomous execution, and complex debugging.
-* **Platform:** Antigravity IDE / Desktop App (`agy`).
-* **Why Antigravity:** Solves problems that simple autocompletes cannot:
-  1. Inspecting file structures, reading docs, and drafting implementation plans.
-  2. Executing terminal commands in isolated sandboxes.
-  3. Spawning subagents to tackle concurrent refactors.
-  4. Maintaining persistent project context and transcripts.
+## Tier 2: Zero-Dollar Local Inference (Qwen 2.5 Coder 32B on MLX)
+* **Goal:** High-performance, zero-cost coding without touching cloud quotas.
+* **Engine:** Dedicated `oMLX` server on `http://localhost:8080/v1`.
+* **Hardware Sizing:** High-quant (6-bit/8-bit) Qwen 32B utilizing Apple Silicon Unified Memory (~25–34GB).
+* **Environment:** Roo Code extension inside Antigravity IDE.
+* **Use Cases:** Scoped single-file refactors, unit tests, shell script generation, and offline work.
+
+---
+
+## Tier 3: Strategic Frontier Backup (Claude 3.7 Sonnet)
+* **Goal:** Seamless continuity when Antigravity quota pauses, or for tough architectural tie-breakers.
+* **Provider:** Anthropic API (Pay-As-You-Go with hard spending limit) or OpenRouter.
+* **Environment:** Toggle dropdown in Roo Code inside Antigravity IDE.
+* **Cost Advantage:** Because it acts purely as a backup, monthly costs stay low ($5–$15/mo) with full prompt caching enabled.
 
 ---
 
 ## Summary Comparison of Antigravity Flavors
 
-| Antigravity Flavor | Has In-Editor Code Canvas? | Has Tab Autocomplete? | Can Use Custom Local Models? | Primary Focus |
+| Antigravity Flavor | Has In-Editor Code Canvas? | Multi-Model Extension Support? | Can Host Local MLX via Roo Code? | Primary Focus |
 | :--- | :--- | :--- | :--- | :--- |
-| **Antigravity IDE** | Yes (VS Code base) | Yes (Cloud DeepMind engine) | No (Cloud-backed tab engine) | All-in-one AI editing environment |
-| **Antigravity Desktop 2.0** | No (Companion app) | No (No text editor canvas) | No (Focuses on Agent orchestration) | High-level agent control & subagent monitor |
-| **Antigravity CLI (`agy`)** | Terminal CLI | No | SDK/Tool integrations | Scriptable terminal pair programming |
+| **Antigravity IDE** | Yes (VS Code base) | Yes (VS Code Extensions) | Yes (via Roo Code sidebar) | **Daily Driver: All-in-one coding & agent IDE** |
+| **Antigravity Desktop 2.0**| No (Companion app) | No | No | High-level agent mission control & cron dashboard |
+| **Antigravity CLI (`agy`)** | Terminal CLI | CLI Tools / MCP | CLI integrations | Scriptable terminal pair programming |
 
 ---
 

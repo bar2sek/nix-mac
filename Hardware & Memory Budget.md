@@ -24,22 +24,19 @@ The **48GB Unified Memory Architecture (UMA)** allows dynamic sharing between th
 
 | Workload Scenario | Qwen Model & Quantization | Model Weight RAM | Context Buffer (32k) | OS & Base Apps | Free / Container RAM |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Heavy Coding / Agentic** | **Qwen 2.5 Coder 32B (4-bit)** | ~19.5 GB | ~3.5 GB | ~6.0 GB | **~19.0 GB** |
-| **Balanced Multitasking** | **Qwen 2.5 Coder 14B (4-bit)** | ~8.8 GB | ~2.0 GB | ~6.0 GB | **~31.2 GB** |
-| **High Precision / Math** | **Qwen 2.5 Coder 14B (8-bit)** | ~15.5 GB | ~2.5 GB | ~6.0 GB | **~24.0 GB** |
-| **Lightweight / Speed** | **Qwen 2.5 Coder 7B (4-bit)** | ~4.5 GB | ~1.2 GB | ~6.0 GB | **~36.3 GB** |
+| **Max RAM Utilization (8-bit)** | **Qwen 2.5 Coder 32B (8-bit)** | ~33.5 GB | ~3.8 GB | ~6.0 GB | **~4.7 GB** |
+| **High Precision Sweet Spot (6-bit)** | **Qwen 2.5 Coder 32B (6-bit)** | ~25.0 GB | ~3.5 GB | ~6.0 GB | **~13.5 GB** |
+| **Standard Baseline (4-bit)** | **Qwen 2.5 Coder 32B (4-bit)** | ~18.5 GB | ~3.5 GB | ~6.0 GB | **~20.0 GB** |
 
 ---
 
 ## Key Takeaways for 48GB Configuration
 
-> [!NOTE]
-> **Qwen 2.5 Coder 32B (4-bit)** is the sweet spot for the 48GB M5 Pro. It provides near GPT-4o-level coding intelligence while leaving ~19GB of memory completely free for Docker/OrbStack containers, IDEs, browser tabs, and compilation tasks.
-
-### Max Context Window Guidelines
-* Apple Silicon uses memory dynamically for the Key-Value (KV) cache.
-* At 4-bit quantization, `Qwen2.5-Coder-32B` consumes ~0.1 GB per 1,000 tokens of context.
-* Running at a full 32,768 context window adds ~3.2–3.5 GB to the model footprint.
+> [!TIP]
+> **High-Quantization on Apple Silicon (6-bit vs 8-bit):**
+> * **8-bit (`mlx-community/Qwen2.5-Coder-32B-Instruct-8bit`):** Maximizes hardware investment, preserving full 16-bit weight fidelity with zero degradation. Consumes ~37GB total under full 32k context, leaving ~5GB for OS and Antigravity IDE.
+> * **6-bit (`mlx-community/Qwen2.5-Coder-32B-Instruct-6bit`):** Captures >99.7% of full precision while leaving a generous ~13.5GB buffer for OrbStack containers, Antigravity IDE, and browser tabs.
+> * Small tab-completion models (1.5B/14B) are completely decommissioned to dedicate 100% of GPU compute and unified memory to high-reasoning agent models.
 
 ---
 

@@ -33,20 +33,23 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 Run the server on-demand without installing anything permanently into system Python:
 
-#### Primary Workhorse: Qwen 2.5 Coder 32B (4-bit)
+#### Primary Workhorse: Qwen 2.5 Coder 32B (High-Quant 6-bit / 8-bit)
 ```bash
+# Launch via oMLX (preferred for Paged SSD KV Caching)
+just serve-omlx
+
+# Or run ephemeral server via uvx:
 uvx --from mlx-lm mlx_lm.server \
-  --model mlx-community/Qwen2.5-Coder-32B-Instruct-4bit \
+  --model mlx-community/Qwen2.5-Coder-32B-Instruct-6bit \
   --port 8080 \
   --chat-template-name chatml
 ```
 
-#### Fast Multitasking: Qwen 2.5 Coder 14B (4-bit)
-```bash
-uvx --from mlx-lm mlx_lm.server \
-  --model mlx-community/Qwen2.5-Coder-14B-Instruct-4bit \
-  --port 8080
-```
+> [!TIP]
+> **Quantization Selection for 48GB M5 Pro:**
+> * **6-bit (`Qwen2.5-Coder-32B-Instruct-6bit`):** ~25GB VRAM. Provides >99.7% float16 accuracy while leaving a 13GB+ cushion for OrbStack and Antigravity IDE.
+> * **8-bit (`Qwen2.5-Coder-32B-Instruct-8bit`):** ~33.5GB VRAM. Near-lossless precision, utilizing the maximum safe Metal memory boundary on 48GB.
+> * Smaller models (1.5B and 14B) have been retired to eliminate background memory contention.
 
 ---
 
