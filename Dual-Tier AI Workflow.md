@@ -20,10 +20,9 @@ Combining **local M5 Pro hardware** with **frontier cloud models** inside a sing
 │               WORKSPACE CANVAS: ANTIGRAVITY IDE             │
 ├──────────────────────────────┬──────────────────────────────┤
 │ PRIMARY: Native AGY Agent    │ BACKUP: Roo Code Switcher    │
-│ "The Autonomous Architect"   │ "Local MLX & Frontier Cloud" │
 ├──────────────────────────────┼──────────────────────────────┤
 │ • Gemini Flash / Pro (Cloud) │ • Local Qwen 32B (:8080 MLX) │
-│ • Multi-file Planning & Docs │ • Claude 3.7 Sonnet (API)    │
+│ • Multi-file Planning & Docs │ • Claude Sonnet 4.6 / Opus 5 │
 │ • Subagent Orchestration     │ • $0 Scoped Edits & Scripts  │
 │ • Terminal Sandbox Tools     │ • Rate-Limit Relief Valve    │
 │ • Runs until Quota Pause     │ • 100% In-IDE Seamless Flow  │
@@ -53,11 +52,11 @@ Combining **local M5 Pro hardware** with **frontier cloud models** inside a sing
 
 ---
 
-## Tier 3: Strategic Frontier Backup (Claude 3.7 Sonnet)
-* **Goal:** Seamless continuity when Antigravity quota pauses, or for tough architectural tie-breakers.
+## Tier 3: Strategic Frontier Backup (Claude Sonnet 4.6 & Opus 5)
+* **Goal:** Seamless continuity when Antigravity quota pauses, or for tough architectural tie-breakers and maximum-reasoning deep audits.
 * **Provider:** Anthropic API (Pay-As-You-Go with hard spending limit) or OpenRouter.
-* **Environment:** Toggle dropdown in Roo Code inside Antigravity IDE.
-* **Cost Advantage:** Because it acts purely as a backup, monthly costs stay low ($5–$15/mo) with full prompt caching enabled.
+* **Environment:** Toggle dropdown in Roo Code inside Antigravity IDE (`Claude Sonnet 4.6` for fast, cost-efficient edits; `Claude Opus 5` for heavy frontier reasoning).
+* **Cost Advantage:** Because it acts purely as a backup, monthly costs stay low with prompt caching enabled.
 
 ---
 

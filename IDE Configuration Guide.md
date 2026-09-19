@@ -15,7 +15,7 @@ created: 2026-08-24
 **Antigravity IDE** is your primary development environment on macOS—combining the familiarity and extension ecosystem of Code OSS with Google's native agentic architecture and **Roo Code** as a multi-model backup switcher.
 
 * **Unified Agent Canvas:** Seamlessly integrates native Antigravity agent workflows (Gemini Flash/Pro) directly alongside the editor canvas, visual diffs, and terminal.
-* **Multi-Model Backup Switcher (Roo Code):** Provides an instant toggle between **Local Qwen 2.5 Coder 32B** (`http://localhost:8080/v1`) and **Claude 3.7 Sonnet** (Anthropic API) whenever AGY tokens are exhausted.
+* **Multi-Model Backup Switcher (Roo Code):** Provides an instant toggle between **Local Qwen 2.5 Coder 32B** (`http://localhost:8080/v1`), **Claude Sonnet 4.6**, and **Claude Opus 5** (Anthropic API) whenever AGY tokens are exhausted.
 * **Zero Bloat:** Replaces standalone VS Code entirely; tab-autocomplete background models are removed to free up 100% of local GPU memory.
 
 ---
@@ -67,15 +67,21 @@ Roo Code profiles are managed **declaratively** via `~/.config/roo-code/settings
 ### Profile 1: Local M5 Pro MLX ($0 / Unlimited)
 * **Provider:** `OpenAI Compatible`
 * **Base URL:** `http://localhost:8080/v1`
-* **Model ID:** `mlx-community--Qwen2.5-Coder-32B-Instruct-8bit`
+* **Model ID:** `mlx-community--Qwen2.5-Coder-32B-Instruct-6bit`
 * **Use Case:** Free autonomous file edits, unit test generation, log diagnosis, and offline work.
 
-### Profile 2: Claude 3.7 Sonnet (Frontier Backup)
+### Profile 2: Claude Sonnet 4.6 (Frontier Backup)
 * **Provider:** `Anthropic`
 * **API Key:** Stored securely in your environment (`sk-ant-...`)
-* **Model ID:** `claude-3-7-sonnet-20250219`
+* **Model ID:** `claude-sonnet-4-6`
 * **Prompt Caching:** Enabled (slashes multi-turn API costs by ~90%)
 * **Use Case:** High-reasoning fallback when Antigravity rate limits are triggered.
+
+### Profile 3: Claude Opus 5 (Deep Reasoning & Complex Architecture)
+* **Provider:** `Anthropic`
+* **API Key:** Stored securely in your environment (`sk-ant-...`)
+* **Model ID:** `claude-opus-5`
+* **Use Case:** Top-tier frontier reasoning, architectural reviews, and benchmark evaluations.
 
 ---
 
@@ -123,7 +129,7 @@ Configure your user settings (`~/Library/Application Support/Antigravity/User/se
 │                                                             │
 │ 3. Token Quota Reached or Scoped Offline Work:              │
 │    • Click ROO CODE in the same Antigravity IDE sidebar     │
-│    • Toggle to Local Qwen 32B ($0) or Claude 3.7 Sonnet    │
+│    • Toggle to Local Qwen 32B ($0), Sonnet 4.6, or Opus 5   │
 │    • Continue executing without interrupting context        │
 └─────────────────────────────────────────────────────────────┘
 ```

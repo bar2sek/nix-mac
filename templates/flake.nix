@@ -417,7 +417,7 @@
 EOF
         chown -R "$PRIMARY_USER" "$USER_HOME/.continue"
 
-        # Declarative Roo Code multi-model profiles (Local Qwen 32B + Claude 3.7 Sonnet)
+        # Declarative Roo Code multi-model profiles (Local Qwen 32B + Claude Sonnet 4.6 + Claude Opus 5)
         mkdir -p "$USER_HOME/.config/roo-code"
         cat << 'EOF' > "$USER_HOME/.config/roo-code/settings.json"
 {
@@ -431,11 +431,17 @@ EOF
         "openAiApiKey": "local",
         "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-6bit"
       },
-      "Claude 3.7 Sonnet (Backup)": {
-        "id": "claude-3-7-sonnet",
+      "Claude Sonnet 4.6": {
+        "id": "claude-sonnet-4-6",
         "apiProvider": "anthropic",
         "apiKey": "",
-        "apiModelId": "claude-3-7-sonnet-20250219"
+        "apiModelId": "claude-sonnet-4-6"
+      },
+      "Claude Opus 5": {
+        "id": "claude-opus-5",
+        "apiProvider": "anthropic",
+        "apiKey": "",
+        "apiModelId": "claude-opus-5"
       }
     }
   },
