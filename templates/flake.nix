@@ -417,25 +417,25 @@
 EOF
         chown -R "$PRIMARY_USER" "$USER_HOME/.continue"
 
-        # Declarative Roo Code multi-model profiles (Local Qwen 32B + Claude Sonnet 4.6 + Claude Opus 5)
+        # Declarative Roo Code multi-model profiles (Claude Sonnet 4.6 + Local Qwen 32B + Claude Opus 5)
         mkdir -p "$USER_HOME/.config/roo-code"
         cat << 'EOF' > "$USER_HOME/.config/roo-code/settings.json"
 {
   "providerProfiles": {
-    "currentApiConfigName": "Local Qwen 32B (6-bit)",
+    "currentApiConfigName": "Claude Sonnet 4.6",
     "apiConfigs": {
-      "Local Qwen 32B (6-bit)": {
-        "id": "local-qwen-32b-6bit",
-        "apiProvider": "openai",
-        "openAiBaseUrl": "http://localhost:8080/v1",
-        "openAiApiKey": "local",
-        "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-6bit"
-      },
       "Claude Sonnet 4.6": {
         "id": "claude-sonnet-4-6",
         "apiProvider": "anthropic",
         "apiKey": "",
         "apiModelId": "claude-sonnet-4-6"
+      },
+      "Local Qwen 2.5 Coder 32B": {
+        "id": "local-qwen-32b",
+        "apiProvider": "openai",
+        "openAiBaseUrl": "http://localhost:8080/v1",
+        "openAiApiKey": "local",
+        "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-6bit"
       },
       "Claude Opus 5": {
         "id": "claude-opus-5",
@@ -472,6 +472,7 @@ EOF
   "git.confirmSync": false,
   "git.autorefresh": true,
   "git.repositoryScanMaxDepth": 2,
+  "roo-cline.autoImportSettingsPath": "~/Library/Application Support/Antigravity IDE/User/globalStorage/rooveterinaryinc.roo-cline/settings/roo-settings.json",
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
