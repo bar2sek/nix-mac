@@ -10,6 +10,9 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, config, ... }: {
+      # Allow unfree packages (e.g., claude-code)
+      nixpkgs.config.allowUnfree = true;
+
       # ----------------------------------------------------------------------
       # 1. System Packages (Managed via Nix)
       # ----------------------------------------------------------------------
@@ -45,6 +48,9 @@
 
         # Cloud Storage & Sync Tooling
         pkgs.rclone
+
+        # Terminal AI Agents & Assistants
+        pkgs.claude-code
       ];
 
       # Shell Aliases (Modern, Colorized with Nerd Font Icons)
