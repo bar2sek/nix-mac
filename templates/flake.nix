@@ -429,7 +429,7 @@ EOF
         "apiProvider": "openai",
         "openAiBaseUrl": "http://localhost:8080/v1",
         "openAiApiKey": "local",
-        "openAiModelId": "mlx-community/Qwen2.5-Coder-32B-Instruct-8bit"
+        "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-8bit"
       },
       "Claude 3.7 Sonnet (Backup)": {
         "id": "claude-3-7-sonnet",

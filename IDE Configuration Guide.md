@@ -67,7 +67,7 @@ Roo Code profiles are managed **declaratively** via `~/.config/roo-code/settings
 ### Profile 1: Local M5 Pro MLX ($0 / Unlimited)
 * **Provider:** `OpenAI Compatible`
 * **Base URL:** `http://localhost:8080/v1`
-* **Model ID:** `mlx-community/Qwen2.5-Coder-32B-Instruct-8bit`
+* **Model ID:** `mlx-community--Qwen2.5-Coder-32B-Instruct-8bit`
 * **Use Case:** Free autonomous file edits, unit test generation, log diagnosis, and offline work.
 
 ### Profile 2: Claude 3.7 Sonnet (Frontier Backup)
