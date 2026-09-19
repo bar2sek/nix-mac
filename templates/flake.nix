@@ -422,14 +422,14 @@ EOF
         cat << 'EOF' > "$USER_HOME/.config/roo-code/settings.json"
 {
   "providerProfiles": {
-    "currentApiConfigName": "Local Qwen 32B (8-bit)",
+    "currentApiConfigName": "Local Qwen 32B (6-bit)",
     "apiConfigs": {
-      "Local Qwen 32B (8-bit)": {
-        "id": "local-qwen-32b-8bit",
+      "Local Qwen 32B (6-bit)": {
+        "id": "local-qwen-32b-6bit",
         "apiProvider": "openai",
         "openAiBaseUrl": "http://localhost:8080/v1",
         "openAiApiKey": "local",
-        "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-8bit"
+        "openAiModelId": "mlx-community--Qwen2.5-Coder-32B-Instruct-6bit"
       },
       "Claude 3.7 Sonnet (Backup)": {
         "id": "claude-3-7-sonnet",
@@ -460,7 +460,6 @@ EOF
   "editor.formatOnSave": true,
   "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "material-icon-theme",
-  "roo-cline.autoImportSettingsPath": "~/.config/roo-code/settings.json",
   "telemetry.telemetryLevel": "off",
   "update.mode": "default",
   "git.enableSmartCommit": false,
