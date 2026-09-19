@@ -62,17 +62,17 @@ agy-ide --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 
 ## 🤖 Step 3: Configuring Roo Code as the Backup Switcher
 
-Inside Antigravity IDE, open the **Roo Code** sidebar panel and configure your two profiles:
+Roo Code profiles are managed **declaratively** via `~/.config/roo-code/settings.json` and automatically imported into Antigravity IDE on startup via `"roo-cline.autoImportSettingsPath"`.
 
 ### Profile 1: Local M5 Pro MLX ($0 / Unlimited)
 * **Provider:** `OpenAI Compatible`
 * **Base URL:** `http://localhost:8080/v1`
-* **Model ID:** `mlx-community/Qwen2.5-Coder-32B-Instruct-6bit` (or `8bit`)
+* **Model ID:** `mlx-community/Qwen2.5-Coder-32B-Instruct-8bit`
 * **Use Case:** Free autonomous file edits, unit test generation, log diagnosis, and offline work.
 
 ### Profile 2: Claude 3.7 Sonnet (Frontier Backup)
-* **Provider:** `Anthropic` (or `OpenRouter`)
-* **API Key:** Stored securely in your environment or password manager
+* **Provider:** `Anthropic`
+* **API Key:** Stored securely in your environment (`sk-ant-...`)
 * **Model ID:** `claude-3-7-sonnet-20250219`
 * **Prompt Caching:** Enabled (slashes multi-turn API costs by ~90%)
 * **Use Case:** High-reasoning fallback when Antigravity rate limits are triggered.
