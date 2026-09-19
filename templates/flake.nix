@@ -420,6 +420,7 @@ EOF
         # Apply settings to both Antigravity IDE and Code OSS
         for settings_dir in \
           "$USER_HOME/Library/Application Support/Antigravity/User" \
+          "$USER_HOME/Library/Application Support/Antigravity IDE/User" \
           "$USER_HOME/Library/Application Support/Code/User"; do
           mkdir -p "$settings_dir"
           cat << 'EOF' > "$settings_dir/settings.json"
@@ -464,6 +465,9 @@ EOF
               "PKief.material-icon-theme" \
               "jnoortheen.nix-ide" \
               "hashicorp.terraform" \
+              "amazonwebservices.aws-toolkit-vscode" \
+              "ms-vscode.azure-account" \
+              "ms-azuretools.vscode-azureresourcegroups" \
               "ms-azuretools.vscode-docker" \
               "ms-kubernetes-tools.vscode-kubernetes-tools"; do
               sudo -H -u "$PRIMARY_USER" env HOME="$USER_HOME" "$ide_bin" --install-extension "$ext" --force 2>/dev/null || true

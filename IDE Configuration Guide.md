@@ -50,9 +50,12 @@ agy-ide --install-extension enkia.tokyo-night
 
 # Language & Tooling Support
 agy-ide --install-extension bbenoist.Nix
+agy-ide --install-extension hashicorp.terraform
+agy-ide --install-extension amazonwebservices.aws-toolkit-vscode
+agy-ide --install-extension ms-vscode.azure-account
+agy-ide --install-extension ms-azuretools.vscode-azureresourcegroups
 agy-ide --install-extension ms-azuretools.vscode-docker
 agy-ide --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-agy-ide --install-extension hashicorp.terraform
 ```
 
 ---
